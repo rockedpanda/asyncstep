@@ -1,5 +1,5 @@
 {
-  "name": "asyncstep",
+  "name": "step2step",
   "version": "0.1.0",
   "description": "async steps for NodeJS tasks",
   "main": "index.js",

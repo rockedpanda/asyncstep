@@ -5,9 +5,9 @@
  * @param {Number} startIndex 从几条数据开始启动,默认为0
  * @param {Number} workers 最大并行数量
  * @param {Boolean} autoStart 是否创建后立即启动任务
- * @return AsyncStep实例, 该实例的promise属性是一个表示是否全部结束的Promise对象
+ * @return Step2Step实例, 该实例的promise属性是一个表示是否全部结束的Promise对象
  */
- function AsyncStep(list, func, startIndex=0, workers=3, autoStart=false){
+ function Step2Step(list, func, startIndex=0, workers=3, autoStart=false){
 	this.list = list;    //待处理数据
 	this.func = func;    //单个任务执行处理函数
 	this.index = startIndex||0;   //当前索引
@@ -23,13 +23,13 @@
 	  this.run();
   }
 }
-AsyncStep.prototype.run = function(){
+Step2Step.prototype.run = function(){
 	this.wait = false;
 	for(let i=0;i<this.workers;i++){
 		this.next();
 	}
 };
-AsyncStep.prototype.next = function(){
+Step2Step.prototype.next = function(){
 	if(this.index >= this.list.length){
     if(this.thread===0){ //已全部结束
       this.resolve && this.resolve(this.ans);
@@ -43,7 +43,7 @@ AsyncStep.prototype.next = function(){
 	}
 	this.goOneStep();
 };
-AsyncStep.prototype.goOneStep = function(){
+Step2Step.prototype.goOneStep = function(){
 	this.thread++;
   let i = this.index;
 	let data = this.list[this.index];
@@ -59,9 +59,9 @@ AsyncStep.prototype.goOneStep = function(){
 		this.next();
 	});
 };
-AsyncStep.prototype.pause = function(){
+Step2Step.prototype.pause = function(){
 	this.wait = true;
 	this.thread = 0;
 };
 
-module.exports = AsyncStep;
+module.exports = Step2Step;
