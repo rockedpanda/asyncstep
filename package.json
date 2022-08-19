@@ -1,0 +1,24 @@
+{
+  "name": "asyncstep",
+  "version": "0.1.0",
+  "description": "async steps for NodeJS tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rockedpanda/asyncstep.git"
+  },
+  "keywords": [
+    "async",
+    "steps",
+    "nodejs"
+  ],
+  "author": "rockedpanda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rockedpanda/asyncstep/issues"
+  },
+  "homepage": "https://github.com/rockedpanda/asyncstep#readme"
+}
